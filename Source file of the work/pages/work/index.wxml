@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tabs-list">
+      <block wx:for="{{['美容服务','医疗服务','寄养服务']}}" wx:for-item="tab" wx:for-index="index" wx:key="index">
+        <view data-event-opts="{{[['tap',[['e0',['$event']]]]]}}" data-event-params="{{({index})}}" class="{{['tab-item',(currentTab===index)?'active':'']}}" bindtap="__e">{{''+tab+''}}</view>
+      </block>
+    </view>
+  </view>
+  <scroll-view class="service-list" scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-triggered="{{isRefreshing}}" data-event-opts="{{[['refresherrefresh',[['onRefresh',['$event']]]],['scrolltolower',[['onLoadMore',['$event']]]]]}}" bindrefresherrefresh="__e" bindscrolltolower="__e">
+    <block wx:for="{{currentList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class="service-item">
+        <image class="service-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="service-info">
+          <view class="service-header"><text class="service-name">{{item.name}}</text><text class="service-price">{{"¥"+item.price}}</text></view><text class="service-desc">{{item.description}}</text>
+          <view class="service-footer">
+            <view class="service-tags">
+              <block wx:for="{{item.tags}}" wx:for-item="tag" wx:for-index="tagIndex" wx:key="tagIndex"><text class="tag">{{''+tag+''}}</text></block>
+            </view><button class="book-btn" size="mini" data-event-opts="{{[['tap',[['bookService',['$0'],[[['currentList','',index]]]]]]]}}" bindtap="__e">预约</button>
+          </view>
+        </view>
+      </view>
+    </block>
+    <uni-load-more vue-id="3614c1ce-1" status="{{loadMoreStatus}}" bind:__l="__l"></uni-load-more>
+  </scroll-view>
+</view>

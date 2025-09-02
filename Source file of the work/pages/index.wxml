@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="search-bar">
+    <uni-search-bar vue-id="18efaafd-1" placeholder="搜索宠物" radius="100" data-event-opts="{{[['^confirm',[['search']]]]}}" bind:confirm="__e" bind:__l="__l"></uni-search-bar>
+  </view>
+  <view class="banner-container">
+    <swiper class="banner" indicator-dots="{{true}}" indicator-color="rgba(255, 255, 255, 0.6)" indicator-active-color="#ff4d4f" autoplay="{{true}}" interval="3000" circular="{{true}}" data-event-opts="{{[['change',[['onSwiperChange',['$event']]]]]}}" bindchange="__e">
+      <block wx:for="{{banners}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <swiper-item>
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="copyright">数字媒体技术2201班 2232357 俞礴</view>
+  </view>
+  <scroll-view class="content-scroll" scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-triggered="{{isRefreshing}}" data-event-opts="{{[['refresherrefresh',[['onRefresh',['$event']]]],['scrolltolower',[['onLoadMore',['$event']]]]]}}" bindrefresherrefresh="__e" bindscrolltolower="__e">
+    <view class="category-section">
+      <block wx:for="{{categories}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <view class="category-item">
+          <image class="category-icon" src="{{item.icon}}"></image><text class="category-name">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="section">
+      <view class="section-header"><text class="section-title">热门活动</text><text class="more">更多 ></text></view>
+      <scroll-view class="activity-scroll" scroll-x="{{true}}">
+        <view class="activity-list">
+          <block wx:for="{{activities}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <view class="activity-item">
+              <image class="activity-image" src="{{item.image}}" mode="aspectFill"></image>
+              <view class="activity-info"><text class="activity-title">{{item.title}}</text><text class="activity-desc">{{item.desc}}</text></view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="section">
+      <view class="section-header"><text class="section-title">推荐宠物</text><text class="more">更多 ></text></view>
+      <view class="pet-list">
+        <block wx:for="{{petList}}" wx:for-item="pet" wx:for-index="index" wx:key="index">
+          <view data-event-opts="{{[['tap',[['goPetDetail',['$0'],[[['petList','',index,'id']]]]]]]}}" class="pet-item" bindtap="__e">
+            <image class="pet-image" src="{{pet.image}}" mode="aspectFill"></image>
+            <view class="pet-info">
+              <view class="pet-header"><text class="pet-name">{{pet.name}}</text><text class="pet-age">{{pet.age}}</text></view><text class="pet-desc">{{pet.description}}</text>
+              <view class="pet-tags">
+                <block wx:for="{{pet.tags}}" wx:for-item="tag" wx:for-index="tagIndex" wx:key="tagIndex"><text class="tag">{{''+tag+''}}</text></block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <block wx:if="{{hasMore}}">
+      <view class="loading-more">
+        <uni-load-more vue-id="18efaafd-2" status="{{loadMoreStatus}}" bind:__l="__l"></uni-load-more>
+      </view>
+    </block>
+  </scroll-view>
+</view>

@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="content">
+    <view class="user-card">
+      <view class="user-info">
+        <image class="avatar" src="https://tse2-mm.cn.bing.net/th/id/OIP-C.7GLMYPqMlt2LgkbPsOnDIAAAAA?rs=1&pid=ImgDetMain" mode="aspectFill"></image>
+        <view class="info-content"><text class="nickname">{{name}}</text><text class="member-tag">{{userInfo.memberLevel}}</text></view>
+      </view>
+      <view class="user-stats">
+        <view class="stat-item"><text class="stat-num">{{userInfo.petCount}}</text><text class="stat-label">我的宠物</text></view>
+        <view class="stat-item"><text class="stat-num">{{userInfo.points}}</text><text class="stat-label">积分</text></view>
+        <view class="stat-item"><text class="stat-num">{{userInfo.coupons}}</text><text class="stat-label">优惠券</text></view>
+      </view>
+    </view>
+    <view class="section-card">
+      <view class="section-title">我的服务</view>
+      <view class="grid-list">
+        <block wx:for="{{services}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="grid-item">
+            <image class="grid-icon" src="{{item.icon}}"></image><text class="grid-text">{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="section-card">
+      <view class="section-title">宠物服务</view>
+      <view class="menu-list">
+        <block wx:for="{{petServices}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="menu-item">
+            <view class="menu-left">
+              <image class="menu-icon" src="{{item.icon}}"></image><text class="menu-text">{{item.name}}</text>
+            </view><text class="menu-right">{{item.desc}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="logout-box"><button type="warn" data-event-opts="{{[['tap',[['handleLogout',['$event']]]]]}}" bindtap="__e">退出登录</button></view>
+  </view>
+</view>

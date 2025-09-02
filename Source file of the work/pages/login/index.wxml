@@ -1,0 +1,13 @@
+<view class="login-container">
+  <view class="logo-box">
+    <image class="logo" src="https://tse2-mm.cn.bing.net/th/id/OIP-C.7GLMYPqMlt2LgkbPsOnDIAAAAA?rs=1&pid=ImgDetMain" mode="aspectFit"></image><text class="title">宠物社区</text>
+  </view>
+  <view class="login-form">
+    <view class="input-group"><text class="iconfont icon-user"></text><input type="text" placeholder="请输入账号" placeholder-class="placeholder" data-event-opts="{{[['input',[['__set_model',['','username','$event',[]]]]]]}}" value="{{username}}" bindinput="__e" /></view>
+    <view class="input-group"><text class="iconfont icon-lock"></text><input type="password" placeholder="请输入密码" placeholder-class="placeholder" data-event-opts="{{[['input',[['__set_model',['','password','$event',[]]]]]]}}" value="{{password}}" bindinput="__e" /></view><button data-event-opts="{{[['tap',[['handleLogin',['$event']]]]]}}" class="login-btn" bindtap="__e">登 录</button>
+    <view class="other-login"><text class="tips">其他登录方式</text>
+      <view class="icon-list"><text class="iconfont icon-weixin"></text><text class="iconfont icon-qq"></text><text class="iconfont icon-weibo"></text></view>
+    </view>
+  </view>
+  <view class="footer"><text>登录即代表同意</text><text class="link">《用户协议》</text><text>和</text><text class="link">《隐私政策》</text></view>
+</view>
